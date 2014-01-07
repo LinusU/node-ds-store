@@ -1,0 +1,9 @@
+{
+  "name": "ds-store",
+  "version": "0.1.0",
+  "main": "index.js",
+  "dependencies": {
+    "macos-alias": "~0.1.2",
+    "bplist-creator": "git://github.com/LinusU/node-bplist-creator"
+  }
+}
