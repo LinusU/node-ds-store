@@ -4,6 +4,6 @@
   "main": "index.js",
   "dependencies": {
     "macos-alias": "~0.2.0",
-    "bplist-creator": "git://github.com/LinusU/node-bplist-creator"
+    "bplist-creator": "~0.0.3"
   }
 }
