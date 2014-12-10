@@ -1,6 +1,7 @@
 {
   "name": "ds-store",
   "version": "0.1.2",
+  "license": "MIT",
   "main": "index.js",
   "author": "Linus Unnebäck <linus@folkdatorn.se>",
   "dependencies": {
@@ -11,5 +12,9 @@
   "contributors": [
     "Linus Unnebäck <linus@folkdatorn.se>",
     "Davide Liessi <davide.liessi@gmail.com>"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/LinusU/node-ds-store.git"
+  }
 }
