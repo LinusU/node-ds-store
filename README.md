@@ -24,9 +24,13 @@ var file = new DSStore();
 
 ## API
 
-### file.setBackground(path)
+### file.setBackgroundPath(path)
 
 Set the background image to file specified by `path`.
+
+### file.setBackgroundColor(red, green, blue)
+
+Set the background color to the color specified by three floats between 0 and 1.
 
 ### file.setIconSize(size)
 

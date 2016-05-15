@@ -1,5 +1,6 @@
 var assert = require('assert')
 var alias = require('macos-alias')
+var util = require('util')
 
 var Entry = require('./lib/entry')
 var DSStore = require('./lib/ds-store')
@@ -11,8 +12,12 @@ function Helper () {
   }
 }
 
-Helper.prototype.setBackground = function (path) {
+Helper.prototype.setBackgroundPath = function (path) {
   this.opts.backgroundPath = path
+}
+
+Helper.prototype.setBackgroundColor = function (red, green, blue) {
+  this.opts.backgroundColor = [red, green, blue]
 }
 
 Helper.prototype.setIconSize = function (size) {
@@ -39,12 +44,26 @@ Helper.prototype.vSrn = function (value) {
 }
 
 Helper.prototype.write = function (path, cb) {
-  var rawAlias = alias.create(this.opts.backgroundPath)
+  var rawAlias, colorComponents
+
+  if (this.opts.backgroundPath) {
+    rawAlias = alias.create(this.opts.backgroundPath)
+  }
+
+  if (this.opts.backgroundColor) {
+    colorComponents = this.opts.backgroundColor
+  }
 
   this.file.push(Entry.construct('.', 'bwsp', this.opts.window))
-  this.file.push(Entry.construct('.', 'icvp', { iconSize: this.opts.iconSize, rawAlias: rawAlias }))
+  this.file.push(Entry.construct('.', 'icvp', { iconSize: this.opts.iconSize, rawAlias: rawAlias, colorComponents: colorComponents }))
 
   this.file.write(path, cb)
 }
+
+/* Backwards compatibility */
+Helper.prototype.setBackground = util.deprecate(
+  Helper.prototype.setBackgroundPath,
+  'setBackground is deprecated, please use setBackgroundPath'
+)
 
 module.exports = exports = Helper
