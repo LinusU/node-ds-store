@@ -4,6 +4,9 @@
   "license": "MIT",
   "main": "index.js",
   "author": "Linus Unnebäck <linus@folkdatorn.se>",
+  "scripts": {
+    "test": "standard"
+  },
   "dependencies": {
     "macos-alias": "~0.2.5",
     "bplist-creator": "~0.0.3",
@@ -16,5 +19,8 @@
   "repository": {
     "type": "git",
     "url": "http://github.com/LinusU/node-ds-store.git"
+  },
+  "devDependencies": {
+    "standard": "^7.0.1"
   }
 }
