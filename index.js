@@ -4,9 +4,10 @@ var util = require('util')
 
 var Entry = require('./lib/entry')
 var DSStore = require('./lib/ds-store')
+var DSStoreOld = require('./lib/ds-store-old')
 
-function Helper () {
-  this.file = new DSStore()
+function Helper (old) {
+  this.file = old ? new DSStoreOld() : new DSStore()
   this.opts = {
     window: { x: 100, y: 100 }
   }
@@ -44,18 +45,21 @@ Helper.prototype.vSrn = function (value) {
 }
 
 Helper.prototype.write = function (path, cb) {
-  var rawAlias, colorComponents
+  var rawAlias, colorComponents, pictureByteLength
 
   if (this.opts.backgroundPath) {
     rawAlias = alias.create(this.opts.backgroundPath)
+    //pictureByteLength = rawAlias.length
   }
 
   if (this.opts.backgroundColor) {
     colorComponents = this.opts.backgroundColor
   }
 
+  //this.file.push(Entry.construct('.', 'BKGD', { pictureByteLength: pictureByteLength }))
   this.file.push(Entry.construct('.', 'bwsp', this.opts.window))
   this.file.push(Entry.construct('.', 'icvp', { iconSize: this.opts.iconSize, rawAlias: rawAlias, colorComponents: colorComponents }))
+  //rawAlias && this.file.push(Entry.construct('.', 'pict', { rawAlias }))
 
   this.file.write(path, cb)
 }

@@ -8,8 +8,13 @@
     "test": "standard"
   },
   "dependencies": {
+    "bisection": "0.0.3",
     "bplist-creator": "~0.0.3",
+    "cstruct": "^0.2.0",
+    "integer-bit-length": "^0.0.2",
     "macos-alias": "~0.2.5",
+    "make-symbol": "^0.1.0",
+    "node-int64": "^0.4.0",
     "tn1150": "^0.1.0"
   },
   "contributors": [
@@ -21,6 +26,7 @@
     "url": "http://github.com/LinusU/node-ds-store.git"
   },
   "devDependencies": {
+    "deep-equal": "^1.0.1",
     "standard": "^7.0.1"
   }
 }
